@@ -38,12 +38,12 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch(exception) {
-        setNotificationMessage(
-          'wrong username or password'
-        )
-        setTimeout(() => {
-          setNotificationMessage(null)
-        }, 5000);
+      setNotificationMessage(
+        'wrong username or password'
+      )
+      setTimeout(() => {
+        setNotificationMessage(null)
+      }, 5000);
     }
   }
 
@@ -76,7 +76,7 @@ const App = () => {
   const removeBlog = (id) => {
     blogService
       .deleteBlog(id)
-      .then(response => {
+      .then(() => {
         setBlogs(blogs.filter(blog => blog.id !== id))
       })
   }
