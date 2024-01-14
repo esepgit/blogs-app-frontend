@@ -73,6 +73,14 @@ const App = () => {
       })
   }
 
+  const removeBlog = (id) => {
+    blogService
+      .deleteBlog(id)
+      .then(response => {
+        setBlogs(blogs.filter(blog => blog.id !== id))
+      })
+  }
+
   if (user === null) {
     return (
       <div>
@@ -115,7 +123,7 @@ const App = () => {
       </Togglable>
 
       {blogs.map((blog) => (
-        <Blog key={blog.id} blog={blog} updateLikes={updateLikes} />
+        <Blog key={blog.id} blog={blog} updateLikes={updateLikes} user={user} removeBlog={removeBlog} />
       ))}
     </div>
   );
