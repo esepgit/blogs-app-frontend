@@ -39,11 +39,11 @@ const Blog = ({ blog, updateLikes, user, removeBlog }) => {
     <div style={blogStyle}>
       <div className="blog">
         {blog.title} {blog.author}{" "}
-        <button onClick={handleVisibility}>
+        <button className="detailsButton" onClick={handleVisibility}>
           {showDetails ? "hide" : "view"}
         </button>
       </div>
-      <div style={showDetails ? showWhenShowDetails : hideWhenShowDetails}>
+      <div className="blogDetails" style={showDetails ? showWhenShowDetails : hideWhenShowDetails}>
         <div>{blog.url}</div>
         <div>
           likes {blog.likes}{" "}

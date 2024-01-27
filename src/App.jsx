@@ -13,6 +13,8 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [notificationMessage, setNotificationMessage] = useState(null)
 
+  let blogSorted = blogs;
+  blogSorted.sort((a, b) => b.likes - a.likes)
   const blogFormRef = useRef()
 
   useEffect(() => {
@@ -122,7 +124,7 @@ const App = () => {
         <BlogForm createBlog={addBlog} />
       </Togglable>
 
-      {blogs.map((blog) => (
+      {blogSorted.map((blog) => (
         <Blog key={blog.id} blog={blog} updateLikes={updateLikes} user={user} removeBlog={removeBlog} />
       ))}
     </div>
