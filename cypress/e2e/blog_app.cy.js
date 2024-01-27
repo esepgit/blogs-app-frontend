@@ -36,4 +36,22 @@ describe('Blog app', function() {
       );
     })
   })
+
+  describe.only('When logged in', function() {
+    beforeEach(function() {
+      cy.get("#username").type("crimson");
+      cy.get("#password").type("pyro");
+      cy.contains("login").click();
+    })
+
+    it('A blog can be created', function() {
+      cy.contains('new blog').click();
+      cy.get('#title').type('Dodoco');
+      cy.get('#author').type('Klee');
+      cy.get('#url').type('www.klee.com');
+      cy.get('#btn-create').click();
+
+      cy.contains('Dodoco');
+    })
+  })
 })
