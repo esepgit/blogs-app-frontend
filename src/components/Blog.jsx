@@ -39,7 +39,7 @@ const Blog = ({ blog, updateLikes, user, removeBlog }) => {
     <div style={blogStyle}>
       <div className="blog">
         {blog.title} {blog.author}{" "}
-        <button className="detailsButton" onClick={handleVisibility}>
+        <button role="button" className="detailsButton" onClick={handleVisibility}>
           {showDetails ? "hide" : "view"}
         </button>
       </div>

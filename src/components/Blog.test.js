@@ -29,7 +29,7 @@ test('render blog contains title and author, but no url or likes', () => {
 })
 
 test('url and likes are displayed when click show button', () => {
-    const button = screen.getByRole('button')
+    const button = screen.getByRole("button");
     fireEvent.click(button)
 
     const div = component.container.querySelector(".blogDetails");
