@@ -1,6 +1,6 @@
 const Notification = ({ message }) => {
   const notificationStyle = {
-    backgroundColor: '#33B5FF',
+    backgroundColor: 'rgb(51, 181, 255)',
     color: '#FFF',
     padding: 2,
     margin: 5
@@ -9,7 +9,7 @@ const Notification = ({ message }) => {
     return null;
   }
 
-  return <div style={notificationStyle}>{message}</div>;
+  return <div className="notification" style={notificationStyle}>{message}</div>;
 };
 
 export default Notification;
