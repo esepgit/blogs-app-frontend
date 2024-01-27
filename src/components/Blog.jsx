@@ -39,7 +39,7 @@ const Blog = ({ blog, updateLikes, user, removeBlog }) => {
     <div style={blogStyle}>
       <div className="blog">
         {blog.title} {blog.author}{" "}
-        <button role="button" className="detailsButton" onClick={handleVisibility}>
+        <button id="btn-view" className="detailsButton" onClick={handleVisibility}>
           {showDetails ? "hide" : "view"}
         </button>
       </div>
@@ -47,7 +47,7 @@ const Blog = ({ blog, updateLikes, user, removeBlog }) => {
         <div>{blog.url}</div>
         <div>
           likes {blog.likes}{" "}
-          <button onClick={() => handleLike(blog.id)}>like</button>
+          <button id="btn-like" onClick={() => handleLike(blog.id)}>like</button>
         </div>
         <div>{blog.user.name}</div>
         {user.name === blog.user.name ? (

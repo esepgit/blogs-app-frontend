@@ -42,6 +42,12 @@ describe('Blog app', function() {
       cy.get("#username").type("crimson");
       cy.get("#password").type("pyro");
       cy.contains("login").click();
+
+      cy.contains("new blog").click();
+      cy.get("#title").type("Tatata");
+      cy.get("#author").type("Klee");
+      cy.get("#url").type("www.klee.com");
+      cy.get("#btn-create").click();
     })
 
     it('A blog can be created', function() {
@@ -52,6 +58,13 @@ describe('Blog app', function() {
       cy.get('#btn-create').click();
 
       cy.contains('Dodoco');
+    })
+
+    it('user can click in like', function() {
+      cy.get('#btn-view').click();
+      cy.get('#btn-like').click();
+
+      cy.contains('likes 1');
     })
   })
 })
