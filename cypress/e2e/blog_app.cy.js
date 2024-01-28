@@ -56,6 +56,12 @@ describe('Blog app', function() {
       cy.get("#author").type("Klee");
       cy.get("#url").type("www.klee.com");
       cy.get("#btn-create").click();
+
+      cy.contains("new blog").click();
+      cy.get("#title").type("Dadada");
+      cy.get("#author").type("Klee");
+      cy.get("#url").type("www.klee.com");
+      cy.get("#btn-create").click();
     })
 
     it('A blog can be created', function() {
@@ -91,6 +97,15 @@ describe('Blog app', function() {
       cy.get('#btn-view').click();
 
       cy.get('.blogDetails').should('not.contain', 'remove');
+    })
+
+    it.only('blog with most likes is first in list', function() {
+      cy.get('.blogs-container').eq(0).should('contain', 'Tatata');
+      cy.get('.blogs-container #btn-view').eq(1).click();
+      cy.get('.blogs-container #btn-like').eq(1).click();
+
+      cy.get(".blogs-container").eq(0).should("contain", "Dadada");
+      
     })
   })
 })

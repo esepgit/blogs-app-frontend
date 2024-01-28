@@ -121,16 +121,27 @@ const App = () => {
       <h2>blogs</h2>
       <Notification message={notificationMessage} />
       <p>
-        {user.name} logged in <button id='btn-logout' onClick={handleLogout}>logout</button>
+        {user.name} logged in{" "}
+        <button id="btn-logout" onClick={handleLogout}>
+          logout
+        </button>
       </p>
 
       <Togglable buttonLabel="new blog" ref={blogFormRef}>
         <BlogForm createBlog={addBlog} />
       </Togglable>
 
-      {blogSorted.map((blog) => (
-        <Blog key={blog.id} blog={blog} updateLikes={updateLikes} user={user} removeBlog={removeBlog} />
-      ))}
+      <div className='blogs-container'>
+        {blogSorted.map((blog) => (
+          <Blog
+            key={blog.id}
+            blog={blog}
+            updateLikes={updateLikes}
+            user={user}
+            removeBlog={removeBlog}
+          />
+        ))}
+      </div>
     </div>
   );
 }
