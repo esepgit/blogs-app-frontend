@@ -63,6 +63,7 @@ const App = () => {
         setTimeout(() => {
           setNotificationMessage(null)
         }, 5000);
+        console.log(returnedBlog)
         setBlogs(blogs.concat(returnedBlog))
       })
   }
@@ -71,6 +72,7 @@ const App = () => {
     blogService
       .update(id, blogObject)
       .then(returnedBlog => {
+        console.log(returnedBlog)
         setBlogs(blogs.map((blog) => (blog.id !== id ? blog : returnedBlog)));
       })
   }

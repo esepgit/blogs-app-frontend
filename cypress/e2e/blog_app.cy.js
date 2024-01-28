@@ -66,5 +66,12 @@ describe('Blog app', function() {
 
       cy.contains('likes 1');
     })
+
+    it('user can remove blog', function() {
+      cy.get('#btn-view').click();
+      cy.get('#btn-remove').click();
+
+      cy.get('html').should('not.contain', 'Tatata')
+    })
   })
 })
