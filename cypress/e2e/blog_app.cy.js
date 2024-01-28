@@ -6,8 +6,16 @@ describe('Blog app', function() {
       name: "Klee",
       password: "pyro"
     }
-    cy.request('POST', 'http://localhost:3003/api/users/', user)
-    cy.visit('http://localhost:5173')
+
+    const user2 = {
+      username: "benett",
+      name: "Benett",
+      password: "pyro"
+    }
+
+    cy.request('POST', 'http://localhost:3003/api/users/', user);
+    cy.request("POST", "http://localhost:3003/api/users/", user2);
+    cy.visit('http://localhost:5173');
   })
 
   it('Login form is show', function() {
@@ -67,11 +75,22 @@ describe('Blog app', function() {
       cy.contains('likes 1');
     })
 
-    it('user can remove blog', function() {
+    it('user can created blog can remove it', function() {
       cy.get('#btn-view').click();
       cy.get('#btn-remove').click();
 
       cy.get('html').should('not.contain', 'Tatata')
+    })
+
+    it('user that not created blog, cant remove it', function() {
+      cy.get('#btn-logout').click();
+
+      cy.get("#username").type("benett");
+      cy.get("#password").type("pyro");
+      cy.contains("login").click();
+      cy.get('#btn-view').click();
+
+      cy.get('.blogDetails').should('not.contain', 'remove');
     })
   })
 })
